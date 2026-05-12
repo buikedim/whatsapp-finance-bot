@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  phoneNumber   String    @unique @map("phone_number")
+  timezone      String    @default("Africa/Lagos")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  preferences   Json?
+  
+  spendingRecords SpendingRecord[]
+  balanceSnapshots BalanceSnapshot[]
+  
+  @@map("users")
+}
+
+model SpendingRecord {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  amountNgn   Decimal  @map("amount_ngn") @db.Decimal(12, 2)
+  category    String?
+  description String?
+  recordedAt  DateTime @map("recorded_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  metadata    Json?
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId, recordedAt])
+  @@map("spending_records")
+}
+
+model BalanceSnapshot {
+  id           String   @id @default(uuid())
+  userId       String   @map("user_id")
+  amountNgn    Decimal  @map("amount_ngn") @db.Decimal(12, 2)
+  balanceType  String   @default("general") @map("balance_type")
+  recordedAt   DateTime @map("recorded_at")
+  note         String?
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId, recordedAt])
+  @@map("balance_snapshots")
+}
+
+model ConversationContext {
+  id        String   @id @default(uuid())
+  userId    String   @unique @map("user_id")
+  messages  Json
+  updatedAt DateTime @updatedAt @map("updated_at")
+  
+  @@map("conversation_context")
+}

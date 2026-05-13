@@ -7,6 +7,7 @@
     "dev": "tsx watch src/app.ts",
     "build": "tsc",
     "start": "node dist/app.js",
+    "start:all": "node start-all.js",
     "worker:messages": "node dist/workers/message-processor.js",
     "worker:outbound": "node dist/workers/outbound-sender.js",
     "db:migrate": "prisma migrate dev",

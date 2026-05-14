@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "start-all.js",
   "scripts": {
+    "worker:messages": "node dist/workers/message-processor.js",
+    "worker:outbound": "node dist/workers/outbound-sender.js",
     "build": "tsc",
     "start": "node start-all.js"
   },

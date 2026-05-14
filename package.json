@@ -1,28 +1,11 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "lib": [
-      "ES2020"
-    ],
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "declaration": false,
-    "sourceMap": false
+  "name": "whatsapp-finance-bot",
+  "version": "1.0.0",
+  "main": "start-all.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node start-all.js"
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
   "dependencies": {
     "@prisma/client": "^6.19.3",
     "prisma": "^6.19.3"

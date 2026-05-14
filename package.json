@@ -7,10 +7,19 @@
     "start": "node start-all.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.96.0",
     "@prisma/client": "^6.19.3",
-    "prisma": "^6.19.3"
+    "bullmq": "^5.76.8",
+    "express": "^5.2.1",
+    "ioredis": "^5.10.1",
+    "prisma": "^6.19.3",
+    "twilio": "^6.0.2",
+    "winston": "^3.19.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.7.0",
     "typescript": "^6.0.3"
   }
 }

@@ -6,7 +6,7 @@
     "worker:messages": "node dist/workers/message-processor.js",
     "worker:outbound": "node dist/workers/outbound-sender.js",
     "build": "tsc",
-    "start": "node start-all.js"
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",

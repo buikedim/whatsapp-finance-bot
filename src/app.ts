@@ -45,16 +45,6 @@ app.use((req, res) => {
 
 app.use(errorHandler);
 
-const PORT = parseInt(env.PORT);
-
-app.listen(PORT, () => {
-  logger.info('Server started', {
-    port: PORT,
-    env: env.NODE_ENV,
-    nodeVersion: process.version,
-  });
-});
-
 process.on('SIGTERM', () => {
   logger.info('SIGTERM received, shutting down gracefully...');
   process.exit(0);

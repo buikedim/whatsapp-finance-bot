@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const env_1 = require("./config/env");
 const logger_1 = require("./utils/logger");
 const whatsapp_controller_1 = require("./webhooks/whatsapp.controller");
 const validate_webhook_1 = require("./middleware/validate-webhook");
@@ -37,14 +36,6 @@ app.use((req, res) => {
     });
 });
 app.use(error_handler_1.errorHandler);
-const PORT = parseInt(env_1.env.PORT);
-app.listen(PORT, () => {
-    logger_1.logger.info('Server started', {
-        port: PORT,
-        env: env_1.env.NODE_ENV,
-        nodeVersion: process.version,
-    });
-});
 process.on('SIGTERM', () => {
     logger_1.logger.info('SIGTERM received, shutting down gracefully...');
     process.exit(0);

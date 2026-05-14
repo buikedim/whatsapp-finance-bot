@@ -24,7 +24,6 @@ app.get('/health', asyncHandler(WhatsAppController.healthCheck));
 
 app.post(
   '/webhooks/whatsapp',
-  validateTwilioWebhook,
   asyncHandler(WhatsAppController.handleIncomingMessage)
 );
 

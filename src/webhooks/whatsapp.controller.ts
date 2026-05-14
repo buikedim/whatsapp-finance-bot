@@ -5,7 +5,8 @@ import { IncomingMessageJob } from '../types';
 import { logger } from '../utils/logger';
 
 export class WhatsAppController {
-  static async handleIncomingMessage(req: Request, res: Response): Promise<void> {
+ static async handleIncomingMessage(req, res) {
+  console.log('Webhook hit');
     try {
       const {
         MessageSid,
